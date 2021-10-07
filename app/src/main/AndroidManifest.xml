@@ -11,10 +11,13 @@
         android:theme="@style/Theme.Hangman_ehilding">
         <activity
             android:name=".AboutActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".GameActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:parentActivityName=".MainActivity"/>
+
         <activity
             android:name=".MainActivity"
             android:exported="true">

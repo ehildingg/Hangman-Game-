@@ -3,4 +3,5 @@
     <string name="title">Hangman Game!</string>
     <string name="button_one">Play Game!</string>
     <string name="button_two">About The Game</string>
+    <string name="about">Made by Erik Hildingsson!</string>
 </resources>
