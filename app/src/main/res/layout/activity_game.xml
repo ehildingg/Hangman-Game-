@@ -14,7 +14,8 @@
         android:layout_marginEnd="16dp"
         android:ems="10"
         android:hint="Guess A Letter"
-        android:inputType="textPersonName"
+        android:maxLength="1"
+        android:inputType="textCapCharacters"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btn_guess"
         app:layout_constraintStart_toStartOf="parent" />
