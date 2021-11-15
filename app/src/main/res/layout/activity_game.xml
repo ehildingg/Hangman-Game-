@@ -8,64 +8,65 @@
 
     <EditText
         android:id="@+id/editxt_enter_char"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_width="100dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="Guess A Letter"
-        android:maxLength="1"
         android:inputType="textCapCharacters"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btn_guess"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:maxLength="1"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_guess" />
 
     <Button
         android:id="@+id/btn_guess"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="12dp"
         android:text="Gissa!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_new_game" />
 
     <TextView
         android:id="@+id/text_attempts"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginStart="12dp"
         android:text="Försök Kvar"
-        app:layout_constraintStart_toEndOf="@+id/text_attempts_ticker"
-        app:layout_constraintTop_toBottomOf="@+id/img_hang_one" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/text_attempts_ticker"
+        app:layout_constraintStart_toEndOf="@+id/text_attempts_ticker" />
 
     <ImageView
         android:id="@+id/img_hang_one"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="397dp"
+        android:layout_height="176dp"
+        android:layout_marginTop="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_attempts"
         app:srcCompat="@drawable/game0" />
 
     <TextView
         android:id="@+id/text_attempts_ticker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="28dp"
         android:text="Siffra"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_hang_one" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/word_to_find"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="208dp"
+        android:layout_marginTop="24dp"
+        android:text="..."
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/img_hang_one" />
 
@@ -73,10 +74,10 @@
         android:id="@+id/btn_new_game"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="68dp"
+        android:layout_marginTop="12dp"
         android:text="Start New Game!"
-        app:layout_constraintBottom_toTopOf="@+id/editxt_enter_char"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/word_to_find" />
 </androidx.constraintlayout.widget.ConstraintLayout>
