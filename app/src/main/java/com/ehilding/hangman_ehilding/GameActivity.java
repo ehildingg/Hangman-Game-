@@ -138,61 +138,74 @@ public class GameActivity extends AppCompatActivity {
 
     private void playerGuess() {
 
-        // Kollar så användarinput är 1 bokstav.
+        // FELHANTERING, INPUT MÅSTE VARA 1 TECKEN.
         if (userCharInput.length() == 1) {
 
             userInput = userCharInput.getText().toString().charAt(0); 
 
-            // Kollar om man redan gissat den bokstaven
+            // OM SPELARE REDAN GISSAT BOKSTAVEN
             if (playerGuesses.contains(userInput)) {
                 Toast.makeText(this, "You all ready guessed: " + userInput, Toast.LENGTH_SHORT).show();
 
-                // Om inte, lägg in i playerGuesses
+                // OM DET ÄR NY GISSNING, LÄGG IN I CHAR-ARRAYLIST SOM VISAS
             } else {
                 playerGuesses.add(userInput);
                 textGuessedLetters.setText("Gissade Bokstäver: " + playerGuesses.toString());
             }
 
-            // Kollar om gissning är rätt
+            // OM GISSNING ÄR RÄTT
             if (wordToFind.contains(String.valueOf(userInput).toUpperCase())) {
-
-                // Logik för att ersätta bokstaven i "hint" på skärmen för användaren
-                for (int i = 0; i < wordToFind.length(); i++) {
-                    if (wordToFind.charAt(i) == userInput) {
-                        wordBuilder.setCharAt(i, userInput);
-
-                    }
-                }
-
-                textWordToFind.setText(wordBuilder.toString());
-                Toast.makeText(this, "Correct Guess!", Toast.LENGTH_SHORT).show();
-                updateUi();
-
-                // Kollar om man gissat hela ordet rätt
-                if (wordBuilder.toString().equals(wordToFind)) {
-
-                    Toast.makeText(this, "YOU WON", Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(this, ResultActivity.class);
-                    i.putExtra("resultat", "Du vann!");
-                    i.putExtra("ord", wordToFind);
-                    i.putExtra("tries", nbErrors);
-                    startActivity(i);
-
-                }
-
-                // Om man inte gissat rätt, plussar på en på nbErrors
-            } else {
-                Toast.makeText(this, "Wrong Guess!", Toast.LENGTH_SHORT).show();
-                nbErrors++;
-                updateUi();    
+                correctGuess();
+                // OM GISSNING ÄR FEL
+             } else {
+                wrongGuess();
             }
-
         }
-
+        // OM ANVÄNDAREN INTE ANGETT BOKSTAV
         else {
         Toast.makeText(this, "Input a letter!", Toast.LENGTH_SHORT).show();
         }
 
     }
 
+    private void wrongGuess() {
+
+        Toast.makeText(this, "Wrong Guess!", Toast.LENGTH_SHORT).show();
+        nbErrors++;
+        updateUi();
+        if (nbErrors == game.MAX_ERRORS) {
+
+            Intent i = new Intent(this, ResultActivity.class);
+            i.putExtra("resultat", "Du förlora!");
+            i.putExtra("ord", wordToFind);
+            i.putExtra("tries", nbErrors);
+            startActivity(i);
+
+        }
+    }
+
+    private void correctGuess() {
+
+        // Logik för att ersätta bokstaven i "hint" på skärmen för användaren
+        for (int i = 0; i < wordToFind.length(); i++) {
+            if (wordToFind.charAt(i) == userInput) {
+                wordBuilder.setCharAt(i, userInput);
+
+            }
+        }
+
+        textWordToFind.setText(wordBuilder.toString());
+        Toast.makeText(this, "Correct Guess!", Toast.LENGTH_SHORT).show();
+        updateUi();
+
+        // Kollar om man gissat hela ordet rätt
+        if (wordBuilder.toString().equals(wordToFind)) {
+
+            Intent i = new Intent(this, ResultActivity.class);
+            i.putExtra("resultat", "Du vann!");
+            i.putExtra("ord", wordToFind);
+            i.putExtra("tries", nbErrors);
+            startActivity(i);
+        }
+    }
 }
