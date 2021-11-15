@@ -26,6 +26,7 @@ public class GameActivity extends AppCompatActivity {
     public static String wordToFind;
     public static String wordHint;
     public int nbErrors = 0;
+    StringBuilder wordBuilder = new StringBuilder();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +55,6 @@ public class GameActivity extends AppCompatActivity {
 
                 playerGuess();
                 userCharInput.setText("");
-
             }
         });
     }
@@ -74,34 +74,41 @@ public class GameActivity extends AppCompatActivity {
 
     private void updateUi() {
         switch (nbErrors) {
-            case 0: hangMan.setImageResource(0);
-            textAttemptsTicker.setText(String.valueOf(nbErrors));
-            break;
-            case 1: hangMan.setImageResource(R.drawable.game0);
-            textAttemptsTicker.setText(String.valueOf(nbErrors));
-            break;
-            case 2: hangMan.setImageResource(R.drawable.game1);
-            textAttemptsTicker.setText(String.valueOf(nbErrors));
-            break;
-            case 3: hangMan.setImageResource(R.drawable.game2);
-            textAttemptsTicker.setText(String.valueOf(nbErrors));
-            break;
-            case 4: hangMan.setImageResource(R.drawable.game3);
-            textAttemptsTicker.setText(String.valueOf(nbErrors));
-            break;
-            case 5: hangMan.setImageResource(R.drawable.game4);
-            textAttemptsTicker.setText(String.valueOf(nbErrors));
-            break;
-            case 6: hangMan.setImageResource(R.drawable.game5);
-            textAttemptsTicker.setText(String.valueOf(nbErrors));
-            break;
-            case 7: hangMan.setImageResource(R.drawable.game6);
-            textAttemptsTicker.setText(String.valueOf(nbErrors));
-            break;
-            case 8: hangMan.setImageResource(R.drawable.game7);
-            textAttemptsTicker.setText(String.valueOf(nbErrors));
-
-
+            case 0:
+                hangMan.setImageResource(0);
+                textAttemptsTicker.setText(String.valueOf(nbErrors));
+                break;
+            case 1:
+                hangMan.setImageResource(R.drawable.game0);
+                textAttemptsTicker.setText(String.valueOf(nbErrors));
+                break;
+            case 2:
+                hangMan.setImageResource(R.drawable.game1);
+                textAttemptsTicker.setText(String.valueOf(nbErrors));
+                break;
+            case 3:
+                hangMan.setImageResource(R.drawable.game2);
+                textAttemptsTicker.setText(String.valueOf(nbErrors));
+                break;
+            case 4:
+                hangMan.setImageResource(R.drawable.game3);
+                textAttemptsTicker.setText(String.valueOf(nbErrors));
+                break;
+            case 5:
+                hangMan.setImageResource(R.drawable.game4);
+                textAttemptsTicker.setText(String.valueOf(nbErrors));
+                break;
+            case 6:
+                hangMan.setImageResource(R.drawable.game5);
+                textAttemptsTicker.setText(String.valueOf(nbErrors));
+                break;
+            case 7:
+                hangMan.setImageResource(R.drawable.game6);
+                textAttemptsTicker.setText(String.valueOf(nbErrors));
+                break;
+            case 8:
+                hangMan.setImageResource(R.drawable.game7);
+                textAttemptsTicker.setText(String.valueOf(nbErrors));
 
         }
     }
@@ -117,46 +124,66 @@ public class GameActivity extends AppCompatActivity {
         }
         wordHint = builder.toString();
         textWordToFind.setText(wordHint);
-
-        playsGame();
-
+        wordBuilder.append(wordHint);
     }
 
-    public void playsGame() {
 
-
-
-    }
 
     private void playerGuess() {
 
-        if (userCharInput.length() == 1) {
-            userInput = userCharInput.getText().toString().charAt(0);
-            playerGuesses.add(userInput);
 
+
+        //builder.replace(i, i, String.valueOf(userInput));
+
+        // Kollar så användarinput är 1 bokstav.
+        if (userCharInput.length() == 1) {
+
+            userInput = userCharInput.getText().toString().charAt(0); 
+
+            // Kollar om man redan gissat den bokstaven
+            if (playerGuesses.contains(userInput)) {
+                Toast.makeText(this, "You all ready guessed: " + userInput, Toast.LENGTH_SHORT).show();
+
+                // Om inte, lägg in i playerGuesses
+            } else {
+
+                playerGuesses.add(userInput);
+            }
+
+            // Kollar om gissning är rätt
             if (wordToFind.contains(String.valueOf(userInput).toUpperCase())) {
 
-                StringBuilder builder = new StringBuilder(wordHint);
-
+                // Logik för att ersätta bokstaven i "hint" på skärmen för användaren
                 for (int i = 0; i < wordToFind.length(); i++) {
                     if (wordToFind.charAt(i) == userInput) {
-                        builder.replace(i, i, String.valueOf(userInput));
-                        wordHint = builder.toString();
+                        wordBuilder.setCharAt(i, userInput);
+
                     }
                 }
-                textWordToFind.setText(wordHint);
+
+                textWordToFind.setText(wordBuilder.toString());
                 Toast.makeText(this, "Correct Guess!", Toast.LENGTH_SHORT).show();
+                updateUi();
+
+                // Kollar om man gissat hela ordet rätt
+                if (wordHint.equals(wordToFind)) {
+
+                    Toast.makeText(this, "YOU WON", Toast.LENGTH_SHORT).show();
+
+                }
+
+                // Om man inte gissat rätt, plussar på en på nbErrors
             } else {
                 Toast.makeText(this, "Wrong Guess!", Toast.LENGTH_SHORT).show();
                 nbErrors++;
+                updateUi();    
             }
-
-        } else {
-            Toast.makeText(this, "Input a letter!", Toast.LENGTH_SHORT).show();
 
         }
 
-        updateUi();
+        else {
+        Toast.makeText(this, "Input a letter!", Toast.LENGTH_SHORT).show();
+        }
 
     }
 

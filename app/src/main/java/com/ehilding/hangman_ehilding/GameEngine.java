@@ -11,7 +11,7 @@ public class GameEngine {
     private static GameEngine hangmanGame = null;
 
     private static final String[] WORDS = {
-            "ABCDEF", "GOI"
+            "AABCDEEF", "GGOIAA"
     };
     public static final Random RANDOM = new Random();
     public final int MAX_ERRORS = 7;
