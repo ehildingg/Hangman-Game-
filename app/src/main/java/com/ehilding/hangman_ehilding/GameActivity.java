@@ -2,6 +2,7 @@ package com.ehilding.hangman_ehilding;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,6 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+
+import javax.xml.transform.Result;
 
 public class GameActivity extends AppCompatActivity {
 
@@ -169,6 +172,11 @@ public class GameActivity extends AppCompatActivity {
                 if (wordBuilder.toString().equals(wordToFind)) {
 
                     Toast.makeText(this, "YOU WON", Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(this, ResultActivity.class);
+                    i.putExtra("resultat", "Du vann!");
+                    i.putExtra("ord", wordToFind);
+                    i.putExtra("tries", nbErrors);
+                    startActivity(i);
 
                 }
 
