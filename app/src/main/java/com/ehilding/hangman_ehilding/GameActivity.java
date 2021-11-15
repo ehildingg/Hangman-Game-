@@ -3,7 +3,6 @@ package com.ehilding.hangman_ehilding;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,7 +15,7 @@ import java.util.ArrayList;
 public class GameActivity extends AppCompatActivity {
 
     ImageView hangMan;
-    TextView textAttempts, textAttemptsTicker, textWordToFind;
+    TextView textAttempts, textAttemptsTicker, textWordToFind, textGuessedLetters;
     EditText userCharInput;
     Button buttonGuess;
     Button buttonNewGame;
@@ -45,6 +44,8 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 buttonNewGame.setVisibility(View.GONE);
+                buttonGuess.setVisibility(View.VISIBLE);
+                userCharInput.setVisibility(View.VISIBLE);
                 newGame();
             }
         });
@@ -67,6 +68,9 @@ public class GameActivity extends AppCompatActivity {
         buttonGuess = findViewById(R.id.btn_guess);
         hangMan = findViewById(R.id.img_hang_one);
         buttonNewGame = findViewById(R.id.btn_new_game);
+        textGuessedLetters = findViewById(R.id.guessed_letters);
+        buttonGuess.setVisibility(View.GONE);
+        userCharInput.setVisibility(View.GONE);
 
         updateUi();
 
@@ -74,39 +78,39 @@ public class GameActivity extends AppCompatActivity {
 
     private void updateUi() {
         switch (nbErrors) {
-            case 0:
+            /*case 1:
                 hangMan.setImageResource(0);
                 textAttemptsTicker.setText(String.valueOf(nbErrors));
-                break;
-            case 1:
+                break;*/
+            case 0:
                 hangMan.setImageResource(R.drawable.game0);
                 textAttemptsTicker.setText(String.valueOf(nbErrors));
                 break;
-            case 2:
+            case 1:
                 hangMan.setImageResource(R.drawable.game1);
                 textAttemptsTicker.setText(String.valueOf(nbErrors));
                 break;
-            case 3:
+            case 2:
                 hangMan.setImageResource(R.drawable.game2);
                 textAttemptsTicker.setText(String.valueOf(nbErrors));
                 break;
-            case 4:
+            case 3:
                 hangMan.setImageResource(R.drawable.game3);
                 textAttemptsTicker.setText(String.valueOf(nbErrors));
                 break;
-            case 5:
+            case 4:
                 hangMan.setImageResource(R.drawable.game4);
                 textAttemptsTicker.setText(String.valueOf(nbErrors));
                 break;
-            case 6:
+            case 5:
                 hangMan.setImageResource(R.drawable.game5);
                 textAttemptsTicker.setText(String.valueOf(nbErrors));
                 break;
-            case 7:
+            case 6:
                 hangMan.setImageResource(R.drawable.game6);
                 textAttemptsTicker.setText(String.valueOf(nbErrors));
                 break;
-            case 8:
+            case 7:
                 hangMan.setImageResource(R.drawable.game7);
                 textAttemptsTicker.setText(String.valueOf(nbErrors));
 
@@ -131,10 +135,6 @@ public class GameActivity extends AppCompatActivity {
 
     private void playerGuess() {
 
-
-
-        //builder.replace(i, i, String.valueOf(userInput));
-
         // Kollar så användarinput är 1 bokstav.
         if (userCharInput.length() == 1) {
 
@@ -146,8 +146,8 @@ public class GameActivity extends AppCompatActivity {
 
                 // Om inte, lägg in i playerGuesses
             } else {
-
                 playerGuesses.add(userInput);
+                textGuessedLetters.setText("Gissade Bokstäver: " + playerGuesses.toString());
             }
 
             // Kollar om gissning är rätt
@@ -166,7 +166,7 @@ public class GameActivity extends AppCompatActivity {
                 updateUi();
 
                 // Kollar om man gissat hela ordet rätt
-                if (wordHint.equals(wordToFind)) {
+                if (wordBuilder.toString().equals(wordToFind)) {
 
                     Toast.makeText(this, "YOU WON", Toast.LENGTH_SHORT).show();
 

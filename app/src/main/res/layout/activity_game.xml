@@ -34,8 +34,7 @@
         android:id="@+id/text_attempts"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:text="Försök Kvar"
+        android:text="FÖRSÖK KVAR"
         app:layout_constraintBaseline_toBaselineOf="@+id/text_attempts_ticker"
         app:layout_constraintStart_toEndOf="@+id/text_attempts_ticker" />
 
@@ -43,7 +42,6 @@
         android:id="@+id/img_hang_one"
         android:layout_width="397dp"
         android:layout_height="176dp"
-        android:layout_marginTop="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_attempts"
@@ -53,8 +51,8 @@
         android:id="@+id/text_attempts_ticker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="48dp"
         android:text="Siffra"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -63,7 +61,7 @@
         android:id="@+id/word_to_find"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
         android:text="..."
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -80,4 +78,14 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/word_to_find" />
+
+    <TextView
+        android:id="@+id/guessed_letters"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:text=""
+        app:layout_constraintBottom_toTopOf="@+id/img_hang_one"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/text_attempts" />
 </androidx.constraintlayout.widget.ConstraintLayout>
