@@ -28,6 +28,7 @@ public class GameActivity extends AppCompatActivity {
     public static String wordToFind;
     public static String wordHint;
     public int nbErrors = 0;
+    public int attemptsLeft = game.MAX_ERRORS;
     StringBuilder wordBuilder = new StringBuilder();
 
     @Override
@@ -161,7 +162,7 @@ public class GameActivity extends AppCompatActivity {
                 wrongGuess();
             }
         }
-        // OM ANVÄNDAREN INTE ANGETT BOKSTAV
+        // OM ANVÄNDAREN INTE ANGETT 1 BOKSTAV
         else {
         Toast.makeText(this, "Input a letter!", Toast.LENGTH_SHORT).show();
         }
@@ -172,13 +173,15 @@ public class GameActivity extends AppCompatActivity {
 
         Toast.makeText(this, "Wrong Guess!", Toast.LENGTH_SHORT).show();
         nbErrors++;
+        attemptsLeft--;
         updateUi();
+
         if (nbErrors == game.MAX_ERRORS) {
 
             Intent i = new Intent(this, ResultActivity.class);
             i.putExtra("resultat", "Du förlora!");
             i.putExtra("ord", wordToFind);
-            i.putExtra("tries", nbErrors);
+            i.putExtra("tries", attemptsLeft);
             startActivity(i);
 
         }
@@ -204,7 +207,7 @@ public class GameActivity extends AppCompatActivity {
             Intent i = new Intent(this, ResultActivity.class);
             i.putExtra("resultat", "Du vann!");
             i.putExtra("ord", wordToFind);
-            i.putExtra("tries", nbErrors);
+            i.putExtra("tries", attemptsLeft);
             startActivity(i);
         }
     }
