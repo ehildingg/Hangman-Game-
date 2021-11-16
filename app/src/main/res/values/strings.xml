@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Hangman</string>
-    <string name="title">Hangman Game!</string>
-    <string name="button_one">Play Game!</string>
-    <string name="button_two">About The Game</string>
+    <string name="title">Hangman-Game! Ämne: Europeska Länder!</string>
+    <string name="string_btn_play_main">Spela!</string>
+    <string name="string_btn_about_main">Om Spelet</string>
     <string name="about">Made by Erik Hildingsson!</string>
 </resources>
