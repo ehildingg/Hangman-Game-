@@ -115,15 +115,21 @@ public class ResultActivity extends AppCompatActivity {
         if (result != null && wordToFind != null) {
 
             txtResult.setText(result);
-            txtWordToGuess.setText("Landet var: " + wordToFind);
-            txtTriesLeft.setText("Du hade: " + triesLeft + "försök kvar!");
+            txtWordToGuess.setText("Landet va: " + wordToFind);
+
+            if (triesLeft != 0 ) {
+                txtTriesLeft.setText("Du hade " + triesLeft + " försök kvar!");
+            } else {
+                txtTriesLeft.setVisibility(View.GONE);
+            }
+
 
 
         } else {
 
-            txtResult.setText("taco");
-            txtTriesLeft.setText("yooyo");
-            txtWordToGuess.setText("hehe");
+            txtResult.setText("Något fel med intent");
+            txtTriesLeft.setText("Något fel med intent");
+            txtWordToGuess.setText("Något fel med intent");
 
         }
 
