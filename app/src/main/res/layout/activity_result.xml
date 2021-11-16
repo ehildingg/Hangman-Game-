@@ -6,6 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".ResultActivity">
 
+    <include
+        layout="@layout/custom_actionbar" />
+
     <TextView
         android:id="@+id/txt_tries_left"
         android:layout_width="wrap_content"

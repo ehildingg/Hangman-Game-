@@ -7,11 +7,15 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class ResultActivity extends AppCompatActivity {
 
     TextView txtResult, txtWordToGuess, txtTriesLeft;
+    ImageButton btnPlayAction, btnAboutAction, btnBack;
+    TextView txtActivityTitle;
+    final String activityTitle = "Resultat";
     Button backToMain;
     String result, wordToFind;
     int triesLeft;
@@ -22,6 +26,7 @@ public class ResultActivity extends AppCompatActivity {
         setContentView(R.layout.activity_result);
 
         init();
+        setUpOnClickers();
         getResultIntent();
         displayResult();
 
@@ -37,9 +42,42 @@ public class ResultActivity extends AppCompatActivity {
         txtWordToGuess = (TextView) findViewById(R.id.txt_word_to_guess);
         backToMain = (Button) findViewById(R.id.btn_back_to_main);
 
+        txtActivityTitle = (TextView) findViewById(R.id.act_location);
+        txtActivityTitle.setText(activityTitle);
+        btnPlayAction = (ImageButton) findViewById(R.id.act_play);
+        btnAboutAction = (ImageButton) findViewById(R.id.act_info);
+        btnBack = (ImageButton) findViewById(R.id.act_back);
+
+
+    }
+
+    private void setUpOnClickers() {
+
         backToMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent i = new Intent(ResultActivity.this, MainActivity.class);
+                startActivity(i);
+            }
+        });
+
+        btnPlayAction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToPlay();
+            }
+        });
+
+        btnAboutAction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToAbout();
+            }
+        });
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 Intent i = new Intent(ResultActivity.this, MainActivity.class);
                 startActivity(i);
             }
@@ -96,4 +134,17 @@ public class ResultActivity extends AppCompatActivity {
 
     }
 
+    private void goToPlay() {
+
+        Intent intent = new Intent(ResultActivity.this, GameActivity.class);
+        startActivity(intent);
+
+    }
+
+    private void goToAbout() {
+
+        Intent intent = new Intent(ResultActivity.this, AboutActivity.class);
+        startActivity(intent);
+
+    }
 }

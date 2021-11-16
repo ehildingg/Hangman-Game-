@@ -13,7 +13,7 @@ public class AboutActivity extends AppCompatActivity {
 
     TextView txtActivityTitle;
     final String activityTitle = "Om Spelet";
-    ImageButton btnPlayAction, btnAboutAction;
+    ImageButton btnPlayAction, btnAboutAction, btnBack;
 
 
     @Override
@@ -22,6 +22,7 @@ public class AboutActivity extends AppCompatActivity {
         setContentView(R.layout.activity_about);
 
         init();
+        setupOnClick();
 
 
 
@@ -35,6 +36,18 @@ public class AboutActivity extends AppCompatActivity {
         btnAboutAction = (ImageButton) findViewById(R.id.act_info);
         btnPlayAction.setVisibility(View.GONE);
         btnAboutAction.setVisibility(View.GONE);
+        btnBack = (ImageButton) findViewById(R.id.act_back);
 
+    }
+
+    private void setupOnClick() {
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(AboutActivity.this, MainActivity.class);
+                startActivity(i);
+            }
+        });
     }
 }
