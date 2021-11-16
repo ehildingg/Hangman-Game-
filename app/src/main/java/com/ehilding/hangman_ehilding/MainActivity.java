@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button btnPlay, btnAbout;
     ImageButton btnPlayAction, btnAboutAction;
-    TextView activityNotice;
+    TextView txtActivityTitle;
     final String activityTitle = "Huvudmeny";
 
 
@@ -30,8 +30,8 @@ public class MainActivity extends AppCompatActivity {
     private void init() {
         btnPlay = (Button) findViewById(R.id.btn_play_game_main);
         btnAbout = (Button) findViewById(R.id.btn_about_game_main);
-        activityNotice = (TextView) findViewById(R.id.act_location);
-        activityNotice.setText(activityTitle);
+        txtActivityTitle = (TextView) findViewById(R.id.act_location);
+        txtActivityTitle.setText(activityTitle);
         btnPlayAction = (ImageButton) findViewById(R.id.act_play);
         btnAboutAction = (ImageButton) findViewById(R.id.act_info);
 

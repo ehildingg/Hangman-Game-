@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,9 +20,11 @@ public class GameActivity extends AppCompatActivity {
 
     ImageView hangMan;
     TextView textAttempts, textAttemptsTicker, textWordToFind, textGuessedLetters;
+    TextView txtActivityTitle;
+    final String activityTitle = "Hangman!";
     EditText userCharInput;
-    Button buttonGuess;
-    Button buttonNewGame;
+    Button buttonGuess, buttonNewGame;
+    ImageButton btnPlayAction, btnAboutAction;
     GameEngine game = GameEngine.getInstance();
     public char userInput;
     public ArrayList<Character> playerGuesses = new ArrayList<>();
@@ -39,6 +42,27 @@ public class GameActivity extends AppCompatActivity {
 
         initializeScreen();
         setupOnClickers();
+
+    }
+
+
+    private void initializeScreen() {
+        textAttempts = findViewById(R.id.text_attempts);
+        textAttemptsTicker = findViewById(R.id.text_attempts_ticker);
+        textWordToFind = findViewById(R.id.word_to_find);
+        userCharInput = findViewById(R.id.editxt_enter_char);
+        buttonGuess = findViewById(R.id.btn_guess);
+        hangMan = findViewById(R.id.img_hang_one);
+        buttonNewGame = findViewById(R.id.btn_new_game);
+        textGuessedLetters = findViewById(R.id.guessed_letters);
+        buttonGuess.setVisibility(View.GONE);
+        userCharInput.setVisibility(View.GONE);
+        btnPlayAction = (ImageButton) findViewById(R.id.act_play);
+        btnAboutAction = (ImageButton) findViewById(R.id.act_info);
+        btnPlayAction.setVisibility(View.GONE);
+        txtActivityTitle = (TextView) findViewById(R.id.act_location);
+        txtActivityTitle.setText(activityTitle);
+        updateUi();
 
     }
 
@@ -62,21 +86,16 @@ public class GameActivity extends AppCompatActivity {
                 userCharInput.setText("");
             }
         });
-    }
 
-    private void initializeScreen() {
-        textAttempts = findViewById(R.id.text_attempts);
-        textAttemptsTicker = findViewById(R.id.text_attempts_ticker);
-        textWordToFind = findViewById(R.id.word_to_find);
-        userCharInput = findViewById(R.id.editxt_enter_char);
-        buttonGuess = findViewById(R.id.btn_guess);
-        hangMan = findViewById(R.id.img_hang_one);
-        buttonNewGame = findViewById(R.id.btn_new_game);
-        textGuessedLetters = findViewById(R.id.guessed_letters);
-        buttonGuess.setVisibility(View.GONE);
-        userCharInput.setVisibility(View.GONE);
+        btnAboutAction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(GameActivity.this, AboutActivity.class);
+                startActivity(i);
+            }
+        });
 
-        updateUi();
+
 
     }
 
