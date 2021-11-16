@@ -88,35 +88,35 @@ public class GameActivity extends AppCompatActivity {
                 break;*/
             case 0:
                 hangMan.setImageResource(R.drawable.game0);
-                textAttemptsTicker.setText(String.valueOf(nbErrors));
+                textAttemptsTicker.setText(String.valueOf(attemptsLeft));
                 break;
             case 1:
                 hangMan.setImageResource(R.drawable.game1);
-                textAttemptsTicker.setText(String.valueOf(nbErrors));
+                textAttemptsTicker.setText(String.valueOf(attemptsLeft));
                 break;
             case 2:
                 hangMan.setImageResource(R.drawable.game2);
-                textAttemptsTicker.setText(String.valueOf(nbErrors));
+                textAttemptsTicker.setText(String.valueOf(attemptsLeft));
                 break;
             case 3:
                 hangMan.setImageResource(R.drawable.game3);
-                textAttemptsTicker.setText(String.valueOf(nbErrors));
+                textAttemptsTicker.setText(String.valueOf(attemptsLeft));
                 break;
             case 4:
                 hangMan.setImageResource(R.drawable.game4);
-                textAttemptsTicker.setText(String.valueOf(nbErrors));
+                textAttemptsTicker.setText(String.valueOf(attemptsLeft));
                 break;
             case 5:
                 hangMan.setImageResource(R.drawable.game5);
-                textAttemptsTicker.setText(String.valueOf(nbErrors));
+                textAttemptsTicker.setText(String.valueOf(attemptsLeft));
                 break;
             case 6:
                 hangMan.setImageResource(R.drawable.game6);
-                textAttemptsTicker.setText(String.valueOf(nbErrors));
+                textAttemptsTicker.setText(String.valueOf(attemptsLeft));
                 break;
             case 7:
                 hangMan.setImageResource(R.drawable.game7);
-                textAttemptsTicker.setText(String.valueOf(nbErrors));
+                textAttemptsTicker.setText(String.valueOf(attemptsLeft));
 
         }
     }
