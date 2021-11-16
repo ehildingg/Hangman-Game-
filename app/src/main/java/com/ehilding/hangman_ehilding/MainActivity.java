@@ -12,7 +12,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     Button btnPlay, btnAbout;
-    ImageButton btnPlayAction, btnAboutAction;
+    ImageButton btnPlayAction, btnAboutAction, btnBack;
     TextView txtActivityTitle;
     final String activityTitle = "Huvudmeny";
 
@@ -34,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
         txtActivityTitle.setText(activityTitle);
         btnPlayAction = (ImageButton) findViewById(R.id.act_play);
         btnAboutAction = (ImageButton) findViewById(R.id.act_info);
+        btnBack = (ImageButton) findViewById(R.id.act_back);
+        btnBack.setVisibility(View.GONE);
 
     }
 

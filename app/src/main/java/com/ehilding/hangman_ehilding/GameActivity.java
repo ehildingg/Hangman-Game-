@@ -24,7 +24,7 @@ public class GameActivity extends AppCompatActivity {
     final String activityTitle = "Hangman!";
     EditText userCharInput;
     Button buttonGuess, buttonNewGame;
-    ImageButton btnPlayAction, btnAboutAction;
+    ImageButton btnPlayAction, btnAboutAction, btnBack;
     GameEngine game = GameEngine.getInstance();
     public char userInput;
     public ArrayList<Character> playerGuesses = new ArrayList<>();
@@ -62,6 +62,7 @@ public class GameActivity extends AppCompatActivity {
         btnPlayAction.setVisibility(View.GONE);
         txtActivityTitle = (TextView) findViewById(R.id.act_location);
         txtActivityTitle.setText(activityTitle);
+        btnBack = (ImageButton) findViewById(R.id.act_back);
         updateUi();
 
     }
@@ -91,6 +92,14 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(GameActivity.this, AboutActivity.class);
+                startActivity(i);
+            }
+        });
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(GameActivity.this, MainActivity.class);
                 startActivity(i);
             }
         });
