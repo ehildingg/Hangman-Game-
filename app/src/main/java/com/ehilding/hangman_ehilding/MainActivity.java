@@ -11,10 +11,10 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+    final String activityTitle = "Huvudmeny";
     Button btnPlay, btnAbout;
     ImageButton btnPlayAction, btnAboutAction, btnBack;
     TextView txtActivityTitle;
-    final String activityTitle = "Huvudmeny";
 
 
     @Override
@@ -22,11 +22,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-         init();
-         initOnClickers();
-
+        init();
+        setupOnClickers();
     }
 
+    //INITIERAR ALLT I ACTIVITYN
     private void init() {
         btnPlay = (Button) findViewById(R.id.btn_play_game_main);
         btnAbout = (Button) findViewById(R.id.btn_about_game_main);
@@ -39,7 +39,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void initOnClickers() {
+    //ONCLICK-LISTNERS PÅ ALLA BUTTONS I ACTIVITY
+    private void setupOnClickers() {
 
         btnPlay.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    // ONCLICK-METOD
     private void goToPlay() {
 
         Intent intent = new Intent(MainActivity.this, GameActivity.class);
@@ -81,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    // ONCLICK-METOD
     private void goToAbout() {
 
         Intent intent = new Intent(MainActivity.this, AboutActivity.class);

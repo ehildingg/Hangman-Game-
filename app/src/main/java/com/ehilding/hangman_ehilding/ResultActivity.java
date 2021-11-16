@@ -12,10 +12,10 @@ import android.widget.TextView;
 
 public class ResultActivity extends AppCompatActivity {
 
+    final String activityTitle = "Resultat";
     TextView txtResult, txtWordToGuess, txtTriesLeft;
     ImageButton btnPlayAction, btnAboutAction, btnBack;
     TextView txtActivityTitle;
-    final String activityTitle = "Resultat";
     Button backToMain;
     String result, wordToFind;
     int triesLeft;
@@ -26,22 +26,18 @@ public class ResultActivity extends AppCompatActivity {
         setContentView(R.layout.activity_result);
 
         init();
-        setUpOnClickers();
+        setupOnClickers();
         getResultIntent();
         displayResult();
-
-
-
     }
 
-
+    //INITIERAR ALLT I ACTIVITYN
     public void init () {
 
         txtResult = (TextView) findViewById(R.id.txt_result);
         txtTriesLeft = (TextView) findViewById(R.id.txt_tries_left);
         txtWordToGuess = (TextView) findViewById(R.id.txt_word_to_guess);
         backToMain = (Button) findViewById(R.id.btn_back_to_main);
-
         txtActivityTitle = (TextView) findViewById(R.id.act_location);
         txtActivityTitle.setText(activityTitle);
         btnPlayAction = (ImageButton) findViewById(R.id.act_play);
@@ -51,7 +47,8 @@ public class ResultActivity extends AppCompatActivity {
 
     }
 
-    private void setUpOnClickers() {
+    //ONCLICK-LISTNERS PÅ ALLA BUTTONS I ACTIVITY
+    private void setupOnClickers() {
 
         backToMain.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,6 +82,7 @@ public class ResultActivity extends AppCompatActivity {
 
     }
 
+    // HÄMTAR INFO FRÅN INTENT (OM MAN VUNNIT ELLER FÖRLORAT)
     private void getResultIntent() {
 
         Bundle extras = getIntent().getExtras();
@@ -110,6 +108,7 @@ public class ResultActivity extends AppCompatActivity {
 
     }
 
+    // VISAR INFO FRÅN INTENT
     private void displayResult() {
 
         if (result != null && wordToFind != null) {
@@ -140,6 +139,7 @@ public class ResultActivity extends AppCompatActivity {
 
     }
 
+    // ONCLICK-METOD
     private void goToPlay() {
 
         Intent intent = new Intent(ResultActivity.this, GameActivity.class);
@@ -147,6 +147,7 @@ public class ResultActivity extends AppCompatActivity {
 
     }
 
+    // ONCLICK-METOD
     private void goToAbout() {
 
         Intent intent = new Intent(ResultActivity.this, AboutActivity.class);

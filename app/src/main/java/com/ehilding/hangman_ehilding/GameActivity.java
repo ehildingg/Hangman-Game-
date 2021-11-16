@@ -14,18 +14,15 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import javax.xml.transform.Result;
-
 public class GameActivity extends AppCompatActivity {
 
-    ImageView hangMan;
-    TextView textAttempts, textAttemptsTicker, textWordToFind, textGuessedLetters;
-    TextView txtActivityTitle;
     final String activityTitle = "Hangman!";
+    ImageView hangMan;
+    TextView textAttempts, textAttemptsTicker, textWordToFind, textGuessedLetters, txtActivityTitle;
     EditText userCharInput;
     Button buttonGuess, buttonNewGame;
     ImageButton btnPlayAction, btnAboutAction, btnBack;
-    GameEngine game = GameEngine.getInstance();
+    GameWords game = GameWords.getInstance();
     public char userInput;
     public ArrayList<Character> playerGuesses = new ArrayList<>();
     public static String wordToFind;
@@ -39,14 +36,12 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-
-        initializeScreen();
+        init();
         setupOnClickers();
-
     }
 
-
-    private void initializeScreen() {
+    //INITIERAR ALLT I ACTIVITYN
+    private void init() {
         textAttempts = findViewById(R.id.text_attempts);
         textAttemptsTicker = findViewById(R.id.text_attempts_ticker);
         textWordToFind = findViewById(R.id.word_to_find);
@@ -67,6 +62,7 @@ public class GameActivity extends AppCompatActivity {
 
     }
 
+    //ONCLICK-LISTNERS PÅ ALLA BUTTONS I ACTIVITY
     private void setupOnClickers() {
 
         buttonNewGame.setOnClickListener(new View.OnClickListener() {
@@ -108,6 +104,7 @@ public class GameActivity extends AppCompatActivity {
 
     }
 
+    //UPPDATERAR HANGMAN-GUBBE UTIFRÅN ANTAL ERRORS + UPPDATERAR "FÖRSÖK KVAR"
     private void updateUi() {
         switch (nbErrors) {
             /*case 1:
@@ -149,6 +146,7 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
+    // NYTT SLUMPAT ORD, SAMT RÄTT "HINT" (----)
     public void newGame() {
 
         wordToFind = game.nextWordToFind();
@@ -163,8 +161,7 @@ public class GameActivity extends AppCompatActivity {
         wordBuilder.append(wordHint);
     }
 
-
-
+    // HANTERAR USERINPUT/GISSNING
     private void playerGuess() {
 
         // FELHANTERING, INPUT MÅSTE VARA 1 TECKEN.
@@ -182,7 +179,7 @@ public class GameActivity extends AppCompatActivity {
                 textGuessedLetters.setText("Gissade Bokstäver: " + playerGuesses.toString());
             }
 
-            // OM GISSNING ÄR RÄTT
+            // VID RÄTT GISSNING
             if (wordToFind.contains(String.valueOf(userInput).toUpperCase())) {
                 correctGuess();
                 // OM GISSNING ÄR FEL
@@ -190,13 +187,14 @@ public class GameActivity extends AppCompatActivity {
                 wrongGuess();
             }
         }
-        // OM ANVÄNDAREN INTE ANGETT 1 BOKSTAV
+        // OM ANVÄNDAREN INTE ANGETT NÅGOT
         else {
         Toast.makeText(this, "Input a letter!", Toast.LENGTH_SHORT).show();
         }
 
     }
 
+    // OM GISSNING ÄR FEL
     private void wrongGuess() {
 
         Toast.makeText(this, "Wrong Guess!", Toast.LENGTH_SHORT).show();
@@ -215,6 +213,7 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
+    // OM GISSNING ÄR RÄTT
     private void correctGuess() {
 
         // Logik för att ersätta bokstaven i "hint" på skärmen för användaren

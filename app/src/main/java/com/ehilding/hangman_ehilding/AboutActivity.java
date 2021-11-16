@@ -11,8 +11,8 @@ import android.widget.TextView;
 
 public class AboutActivity extends AppCompatActivity {
 
-    TextView txtActivityTitle;
     final String activityTitle = "Om Spelet";
+    TextView txtActivityTitle;
     ImageButton btnPlayAction, btnAboutAction, btnBack;
 
 
@@ -22,12 +22,10 @@ public class AboutActivity extends AppCompatActivity {
         setContentView(R.layout.activity_about);
 
         init();
-        setupOnClick();
-
-
-
+        setupOnClickers();
     }
 
+    //INITIERAR ALLT I ACTIVITYN
     private void init() {
 
         txtActivityTitle = (TextView) findViewById(R.id.act_location);
@@ -40,7 +38,8 @@ public class AboutActivity extends AppCompatActivity {
 
     }
 
-    private void setupOnClick() {
+    //ONCLICK-LISTNERS PÅ ALLA BUTTONS I ACTIVITY
+    private void setupOnClickers() {
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
