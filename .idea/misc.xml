@@ -3,10 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/gradient_actionbar.xml" value="0.228515625" />
+        <entry key="app/src/main/res/drawable/ic_baseline_smart_display_24.xml" value="0.228515625" />
+        <entry key="app/src/main/res/drawable/ic_info.xml" value="0.228515625" />
         <entry key="app/src/main/res/layout/activity_about.xml" value="0.24791666666666667" />
         <entry key="app/src/main/res/layout/activity_game.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_result.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/custom_actionbar.xml" value="0.40276338425126607" />
       </map>
     </option>
   </component>
