@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable-xhdpi/custom_edit.xml" value="0.186328125" />
         <entry key="app/src/main/res/drawable/custom_button.xml" value="0.17569444444444443" />
         <entry key="app/src/main/res/drawable/gradient_actionbar.xml" value="0.228515625" />
         <entry key="app/src/main/res/drawable/gradient_main_background.xml" value="0.17569444444444443" />
@@ -12,7 +13,7 @@
         <entry key="app/src/main/res/layout/activity_about.xml" value="0.24791666666666667" />
         <entry key="app/src/main/res/layout/activity_game.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/activity_result.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_result.xml" value="0.25" />
         <entry key="app/src/main/res/layout/custom_actionbar.xml" value="0.33" />
       </map>
     </option>
